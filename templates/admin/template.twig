@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}{% endblock %}</title>
     {{ encore_entry_link_tags('admin/dcms') }}
+    {{ encore_entry_script_tags('admin/dcms_scripts') }}
   </head>
   <body>
-    {% if (app.request.pathinfo != '/') and (app.user != null) %}
+    {% if app.user != null %}
       {{ bui.nav() }}
     {% endif %}
     {% block content %}{% endblock %}
-    {{ encore_entry_script_tags('admin/dcms_scripts') }}
   </body>
 </html>

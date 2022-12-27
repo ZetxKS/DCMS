@@ -10,6 +10,7 @@
 import './bootstrap';
 import jquery from 'jquery';
 import 'bootstrap';
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;
@@ -29,22 +30,35 @@ class dcms {
     }
 
     login_admin_handler() {
-        $('form').on("submit", function (e) {
-            e.preventDefault;
+        $('form').on('submit', function (e) {
+            e.preventDefault();
             let url = $(this).attr('action');
             let method = $(this).attr('method') ?? 'POST';
             let data = $(this).serializeArray();
+
+            let toStr = {
+                '_username': "логин",
+                'password': "пароль"
+            };
+            let check = true;
+            $.each(data, function (k,v) {
+                if(v.value == '') {
+                    BUI.toast('danger', 'Введите данные', 'Поле ' + toStr[v.name] + ' не должно быть пустым');
+                    return check = false;
+                }
+            });
+            if(check == false)
+                return check;
             $.ajax({
                 url: url,
                 method: method,
                 data: data,
+
                 success: function (data) {
                     window.location.reload();
                 },
                 error: function (data) {
-                    $('body > div.d-flex.vh-100.flex-column.justify-content-center.align-items-center > form > div').prepend(
-                        BUI.alert('danger', 'Не верный логин или пароль')
-                    );
+                    BUI.toast('danger', 'Ошибка', 'Не верный логин или пароль');
                 }
             });
             return false;
@@ -59,7 +73,21 @@ class BUI {
     static alert(type, text) {
         return $('<div class="alert alert-' + type + '" role="alert">' + text + '</div>');
     }
+
+    static toast(color, title, text, pos = 'top-0 end-0') {
+        let id = (Math.random() + 1).toString(36).substring(7);
+        let toast = $('<div id="' + id + '" class="toast text-bg-' + color + '" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="me-auto">' + title + '</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">' + text + '</div></div>')
+        let container = $('<div class="toast-container position-fixed ' + pos + ' p-3"></div>');
+
+        if($('body div.toast-container').length == 0)
+            $('body').append(container);
+
+        $('body div.toast-container').append(toast);
+
+        (new bootstrap.Toast($('#' + id))).show();
+    }
 }
 
-let dms = new dcms();
-console.log(dms.url);
+$(function () {
+    let dms = new dcms();
+});
