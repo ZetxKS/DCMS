@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    {{ encore_entry_link_tags('admin/dcms') }}
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+    {{ encore_entry_script_tags('admin/dcms_scripts') }}
+  </body>
+</html>

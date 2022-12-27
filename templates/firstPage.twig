@@ -1,0 +1,133 @@
+{% extends "admin/template.twig" %}
+
+{% block content %}
+    <style>
+    #exampleModalCenter {
+        animation: row1 30s ease infinite;
+    }
+    #exampleModalCenter2 {
+        animation: row2 30s ease infinite;
+    }
+    #exampleModalCenter3 {
+        animation: row3 30s ease infinite;
+    }
+    @keyframes row1 {
+        0% {
+            opacity: 1;
+        }
+        16% {
+            opacity: 0;
+            display: none;
+        }
+        84% {
+            display: block;
+            opacity: 0;
+        }
+        100% {
+            
+            opacity: 1;
+        }
+    }
+    @keyframes row2 {
+        0% {
+            display: none;
+            opacity: 0;
+        }
+        17% {
+            opacity: 0;
+            display: block;
+        }
+        32% {
+            opacity: 1;
+        }
+        48% {
+            opacity: 0;
+        }
+        49% {
+            display: none;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    @keyframes row3 {
+        0% {
+            display: none;
+            opacity: 0;
+        }
+        49% {
+            opacity: 0;
+            display: block;
+        }
+        64% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 0;
+        }
+        81% {
+            display: none;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    </style>
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Hello!</h5>
+            </div>
+            <div class="modal-body">
+                <span class="h3 text-muted">It`s DCMS</span>
+                <p>Dev by <a href="https://github.com/ZetxKS">ZetxKS</a>. Link github <a href="https://github.com/ZetxKS/DCMS">repo</a></p>
+                <p>
+                    <span class="h5">DCMS</span> - CMS open source project, based on framework Symfony
+                </p>
+                <p class="opacity-25">
+                    I really tried to do something good.
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Здоров!</h5>
+            </div>
+            <div class="modal-body">
+                <span class="h3 text-muted">Це DCMS</span>
+                <p>Розробник <a href="https://github.com/ZetxKS">ZetxKS</a>. Посилання на github <a href="https://github.com/ZetxKS/DCMS">репозиторій</a></p>
+                <p>
+                    <span class="h5">DCMS</span> - проект CMS з відкритим кодом, заснований на фреймворку Symfony
+                </p>
+                <p class="opacity-25">
+                    Я справді намагався зробити щось хороше.
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark">
+            <div class="modal-header justify-content-center">
+                <h5 class="modal-title" id="exampleModalLongTitle">Привет!</h5>
+            </div>
+            <div class="modal-body">
+                <span class="h3 text-muted">Это DCMS</span>
+                <p>Разработка <a href="https://github.com/ZetxKS">ZetxKS</a>. Сслыка на <a href="https://github.com/ZetxKS/DCMS">репозиторий</a></p>
+                <p>
+                    <span class="h5">DCMS</span> - CMS основанная на фреймворке Symfony с открытым исходным кодом
+                </p>
+                <p class="opacity-25">
+                    я действительно старался сделать что-то хорошее
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
