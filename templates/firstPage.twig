@@ -1,133 +1,74 @@
-{% extends "admin/template.twig" %}
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Добро пожаловать</title>
+    {{ encore_entry_link_tags('admin/dcms') }}
+    {{ encore_entry_script_tags('admin/dcms_scripts') }}
+</head>
+<body>
 
-{% block content %}
-    <style>
-    #exampleModalCenter {
-        animation: row1 30s ease infinite;
-    }
-    #exampleModalCenter2 {
-        animation: row2 30s ease infinite;
-    }
-    #exampleModalCenter3 {
-        animation: row3 30s ease infinite;
-    }
-    @keyframes row1 {
-        0% {
-            opacity: 1;
-        }
-        16% {
-            opacity: 0;
-            display: none;
-        }
-        84% {
-            display: block;
-            opacity: 0;
-        }
-        100% {
-            
-            opacity: 1;
-        }
-    }
-    @keyframes row2 {
-        0% {
-            display: none;
-            opacity: 0;
-        }
-        17% {
-            opacity: 0;
-            display: block;
-        }
-        32% {
-            opacity: 1;
-        }
-        48% {
-            opacity: 0;
-        }
-        49% {
-            display: none;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-    @keyframes row3 {
-        0% {
-            display: none;
-            opacity: 0;
-        }
-        49% {
-            opacity: 0;
-            display: block;
-        }
-        64% {
-            opacity: 1;
-        }
-        80% {
-            opacity: 0;
-        }
-        81% {
-            display: none;
-        }
-        100% {
-            opacity: 0;
-        }
-    }
-    </style>
-    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-dark">
-            <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLongTitle">Hello!</h5>
-            </div>
-            <div class="modal-body">
-                <span class="h3 text-muted">It`s DCMS</span>
-                <p>Dev by <a href="https://github.com/ZetxKS">ZetxKS</a>. Link github <a href="https://github.com/ZetxKS/DCMS">repo</a></p>
-                <p>
-                    <span class="h5">DCMS</span> - CMS open source project, based on framework Symfony
-                </p>
-                <p class="opacity-25">
-                    I really tried to do something good.
-                </p>
-            </div>
-            </div>
+<div class="grid vh-100" style="--bs-rows: 3; --bs-columns: 3;">
+    <div class="g-start-2 shadow p-3 align-items-center d-flex flex-row rounded-5" style="grid-row: 2;">
+        <div>
+            <h1 id="title"></h1>
+            <span class="h3" id="subtitle"></span>
+            <p class="mt-3" id="description"></p>
+            <p class="text-muted" id="ps"></p>
         </div>
     </div>
-    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-dark">
-            <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLongTitle">Здоров!</h5>
-            </div>
-            <div class="modal-body">
-                <span class="h3 text-muted">Це DCMS</span>
-                <p>Розробник <a href="https://github.com/ZetxKS">ZetxKS</a>. Посилання на github <a href="https://github.com/ZetxKS/DCMS">репозиторій</a></p>
-                <p>
-                    <span class="h5">DCMS</span> - проект CMS з відкритим кодом, заснований на фреймворку Symfony
-                </p>
-                <p class="opacity-25">
-                    Я справді намагався зробити щось хороше.
-                </p>
-            </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-dark">
-            <div class="modal-header justify-content-center">
-                <h5 class="modal-title" id="exampleModalLongTitle">Привет!</h5>
-            </div>
-            <div class="modal-body">
-                <span class="h3 text-muted">Это DCMS</span>
-                <p>Разработка <a href="https://github.com/ZetxKS">ZetxKS</a>. Сслыка на <a href="https://github.com/ZetxKS/DCMS">репозиторий</a></p>
-                <p>
-                    <span class="h5">DCMS</span> - CMS основанная на фреймворке Symfony с открытым исходным кодом
-                </p>
-                <p class="opacity-25">
-                    я действительно старался сделать что-то хорошее
-                </p>
-            </div>
-            </div>
-        </div>
-    </div>
-{% endblock %}
+</div>
+<div class="position-absolute w-100 text-center" style="width: 60px; top: calc(100% - 60px)">
+    <a class="btn btn-outline-secondary" target="_blank" class="text-muted" href="https://github.com/ZetxKS">Dev by ZetXKS</a>
+</div>
+</body>
+<script defer>
+    let text = [
+        {
+            'title': "Привет!",
+            'subtitle': "Это DCMS",
+            'description': "<b>DCMS</b> - CMS основанная на фреймворке Symfony с открытым исходным кодом",
+            'ps': "Я действительно старался сделать что-то хорошее",
+            'background': 'linear-gradient(180deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.05) 33%, rgba(0,0,255,.05) 34%, rgba(0,0,255,.05) 66%, rgba(255,0,0,.05) 67%, rgba(255,0,0,.05) 100%)'
+        },
+        {
+            'title': "Здоров!",
+            'subtitle': "Це DCMS",
+            'description': "<b>DCMS</b> - проект CMS з відкритим кодом, заснований на фреймворку Symfony",
+            'ps': "Я справді намагався зробити щось хороше.",
+            'background': "linear-gradient(180deg, rgba(0,99,255,.05) 0%, rgba(0,0,255,.05) 49%, rgba(255,244,0,.05) 51%, rgba(255,244,0,.05) 100%)"
+        },
+        {
+            'title': "Hello!",
+            'subtitle': "It`s DCMS",
+            'description': "<b>DCMS</b> - CMS open source project, based on framework Symfony",
+            'ps': "I really tried to do something good.",
+            'background': "linear-gradient(90deg, rgba(0,255,59,.05) 0%, rgba(0,255,59,.05) 33%, rgba(255,255,255,.05) 34%, rgba(255,255,255,.05) 66%, rgba(255,214,0,.05) 67%, rgba(255,214,0,.05) 100%)"
+        }
+    ];
+
+    let c = 0;
+
+    function update_text() {
+        $('div.g-start-2').fadeOut(400, function () {
+
+            if(c >= text.length)
+                c = 0;
+
+            $('div.g-start-2').css('background', text[c].background);
+            $('#title').html(text[c].title);
+            $('#subtitle').html(text[c].subtitle);
+            $('#description').html(text[c].description);
+            $('#ps').html(text[c].ps);
+            $('div.g-start-2').fadeIn();
+
+            c++;
+        });
+    }
+    update_text();
+    setInterval(() => {
+        update_text();
+    },  5000);
+</script>
+</html>

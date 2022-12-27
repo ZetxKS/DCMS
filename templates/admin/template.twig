@@ -1,3 +1,4 @@
+{% import "admin/macros.twig" as bui %}
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -7,6 +8,9 @@
     {{ encore_entry_link_tags('admin/dcms') }}
   </head>
   <body>
+    {% if (app.request.pathinfo != '/') and (app.user != null) %}
+      {{ bui.nav() }}
+    {% endif %}
     {% block content %}{% endblock %}
     {{ encore_entry_script_tags('admin/dcms_scripts') }}
   </body>

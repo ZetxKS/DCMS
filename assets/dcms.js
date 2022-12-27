@@ -18,9 +18,6 @@ class dcms {
     constructor() {
         this.url = window.location.pathname;
         switch (this.url) {
-            case "/":
-                this.first_page();
-            break;
             case "/dcms/login":
                 this.login_admin_handler();
             break;
@@ -29,14 +26,6 @@ class dcms {
             break;
         }
         
-    }
-
-    first_page() {
-        $(window).on('load',function(){
-            $('#exampleModalCenter3').modal('show');
-            $('#exampleModalCenter2').modal('show');
-            $('#exampleModalCenter').modal('show');
-        });
     }
 
     login_admin_handler() {

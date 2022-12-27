@@ -43,7 +43,10 @@ class AdminController extends AbstractController
         elseif($this->security->getUser() != null && $page == 'login')
             return $this->redirect('/dcms/index', 302);
 
-        return $this->render('admin/pages/'.$page.'.html.twig');
+        if(is_file($this->getParameter('kernel.project_dir') . '/templates/admin/pages/'.$page.'.html.twig'))
+            return $this->render('admin/pages/'.$page.'.html.twig');
+        else
+            return $this->redirect('/dcms/index');
     }
 
     public function test_page() {
