@@ -15,6 +15,11 @@ window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 const $ = require('jquery');
 global.$ = global.jQuery = $;
 
+const inpTostr = {
+    '_username': 'Логин',
+    'password': 'Пароль'
+}
+
 class dcms {
     constructor() {
         this.url = window.location.pathname;
@@ -35,25 +40,21 @@ class dcms {
             let url = $(this).attr('action');
             let method = $(this).attr('method') ?? 'POST';
             let data = $(this).serializeArray();
-
-            let toStr = {
-                '_username': "логин",
-                'password': "пароль"
-            };
             let check = true;
             $.each(data, function (k,v) {
                 if(v.value == '') {
-                    BUI.toast('danger', 'Введите данные', 'Поле ' + toStr[v.name] + ' не должно быть пустым');
+                    BUI.toast('danger', 'Введите ' + inpTostr[v.name], 'Поле ' + inpTostr[v.name] + ' не должно быть пустым');
                     return check = false;
                 }
             });
+
             if(check == false)
                 return check;
+
             $.ajax({
                 url: url,
                 method: method,
                 data: data,
-
                 success: function (data) {
                     window.location.reload();
                 },
@@ -61,6 +62,7 @@ class dcms {
                     BUI.toast('danger', 'Ошибка', 'Не верный логин или пароль');
                 }
             });
+
             return false;
         });
     }
