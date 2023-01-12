@@ -1,7 +1,34 @@
 {% extends "admin/template.twig" %}
 {% block content%}
     <div class="grid gap-3 p-5 pt-3">
-        <div class="g-col-md-2 border rounded">.g-col-6</div>
-        <div class="g-col-md-10 border rounded p-1">.g-col-6</div>
+        <div class="g-col-md-2">
+            <div class="list-group" id="left_nav">
+                <button class="btn list-group-item list-group-item-action active" aria-current="true" ajax-load="statistic">
+                    Статистика
+                </button>
+            </div>
+        </div>
+        <div class="g-col-md-10 border rounded p-2" id="content">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <style>
+                #ajax_load_anim {
+                    animation: anim_ajax_load 6s infinite;
+                    margin-left: calc(50% - 25vh);
+                }
+                @keyframes anim_ajax_load {
+                    from {
+                        transform: rotateZ(0deg);
+                    }
+                    50% {
+                        transform: rotateZ(1440deg);
+                    }
+                    to {
+                        transform: rotateZ(0deg);
+                    }
+                }
+            </style>
+        </div>
     </div>
 {% endblock %}
