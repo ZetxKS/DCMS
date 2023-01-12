@@ -26,12 +26,11 @@ class dcms {
         switch (this.url) {
             case "/dcms/login":
                 this.login_admin_handler();
-            break;
+                break;
             default:
                 this.default()
-            break;
+                break;
         }
-        
     }
 
     login_admin_handler() {
@@ -72,10 +71,12 @@ class dcms {
 }
 
 class BUI {
+    /* Возвращает алерт */
     static alert(type, text) {
         return $('<div class="alert alert-' + type + '" role="alert">' + text + '</div>');
     }
 
+    /* Показывает уведомление */
     static toast(color, title, text, pos = 'top-0 end-0') {
         let id = (Math.random() + 1).toString(36).substring(7);
         let toast = $('<div id="' + id + '" class="toast text-bg-' + color + '" role="alert" aria-live="assertive" aria-atomic="true"><div class="toast-header"><strong class="me-auto">' + title + '</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div><div class="toast-body">' + text + '</div></div>')
